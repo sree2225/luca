@@ -241,7 +241,7 @@ function MarkdownText({ text, className = '' }) {
 }
 
 async function generateLucaNotes(subject, lesson, mood) {
-    const response = await fetch("http://localhost:5000/api/generate-notes", {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/generate-notes`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -261,7 +261,7 @@ async function generateLucaNotes(subject, lesson, mood) {
 }
 
 async function askLuca(messages, subject = "", topic = "") {
-    const response = await fetch("http://localhost:5000/api/ask-luca", {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ask-luca`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages, subject, topic }),
