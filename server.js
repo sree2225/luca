@@ -83,7 +83,7 @@ app.post("/api/generate-notes", async (req, res) => {
    const completion = await groq.chat.completions.create({
   model: process.env.GROQ_MODEL || "openai/gpt-oss-20b",
   temperature: 0.35,
-  max_completion_tokens: 8000,
+  max_completion_tokens: 3500,
 
   messages: [
     {
