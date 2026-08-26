@@ -80,10 +80,11 @@ app.post("/api/generate-notes", async (req, res) => {
           ? "The student is in exam mode. Prioritize definitions, important points and exam questions."
           : "The student is comfortable. Balance explanation, examples and exam preparation.";
 
-    const completion = await groq.chat.completions.create({
-      model: process.env.GROQ_MODEL || "openai/gpt-oss-20b",
-      temperature: 0.35,
-      messages: [
+   const completion = await groq.chat.completions.create({
+  model: process.env.GROQ_MODEL || "openai/gpt-oss-20b",
+  temperature: 0.35,
+  max_completion_tokens: 8192,
+  messages: [
         {
           role: "system",
           content: `You are Luca, a friendly but academically accurate college AI tutor for a B.Sc. Bioinformatics student. Generate notes specifically for the requested subject and topic. Never use a generic template. The content must change meaningfully when the topic changes. ${moodInstruction}`,
