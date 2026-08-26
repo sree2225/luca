@@ -106,16 +106,20 @@ Subject: ${subject}
 Topic: ${topic}
 
 Requirements:
-- Explain the actual topic, not how to study it.
+- Overview
+- Detailed explanation
+- Key concepts
+- Important terms
+- Examples
+- Exam points
+- 5 short questions
+- 3 long questions
+- Quick revision
+- 3–5 sections
 - Use accurate academic terminology.
 - Include important definitions and concepts.
-- Explain mechanisms/processes where relevant.
 - Include examples and applications where relevant.
 - Make examination points useful for semester preparation.
-- Give 5 short-answer questions.
-- Give 3 descriptive/long-answer questions.
-- Give 6 to 10 quick-revision points.
-- Create 3 to 5 logical sections.
 - Each section must have a heading, subheading, explanation and bullet points.
 - Return only the requested JSON structure.`,
     },
