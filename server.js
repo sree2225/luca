@@ -84,28 +84,52 @@ app.post("/api/generate-notes", async (req, res) => {
   model: process.env.GROQ_MODEL || "openai/gpt-oss-20b",
   temperature: 0.35,
   max_completion_tokens: 8192,
+
   messages: [
-        {
-          role: "system",
-          content: `You are Luca, a friendly but academically accurate college AI tutor for a B.Sc. Bioinformatics student. Generate notes specifically for the requested subject and topic. Never use a generic template. The content must change meaningfully when the topic changes. ${moodInstruction}`,
-        },
-        {
-          role: "user",
-          content: `Create detailed study notes for:\nSubject: ${subject}\nTopic: ${topic}\n\nRequirements:\n- Explain the actual topic, not just how to study it.\n- Use accurate academic terminology.\n- Keep the language understandable for a college student.\n- Include definitions, mechanisms/processes where relevant, examples and applications where relevant.\n- Make examination points useful for semester preparation.\n- Give 5 short-answer questions and 5 descriptive/long-answer questions.\n- Give 6 to 10 quick-revision points.\n- Do not invent syllabus-specific claims that are not necessary.\n- Use headings and subheadings throughout the explanation; avoid one huge paragraph.
-- Create 4 to 7 logical sections for the topic. Each section should have a clear heading, optional subheading, a focused explanation, and useful bullet points.
-- Make the notes feel like well-organized college textbook notes, not a generic AI paragraph.
+    {
+      role: "system",
+      content: `You are Luca, a friendly but academically accurate college AI tutor for a B.Sc. Bioinformatics student.
+
+Generate accurate, topic-specific study notes.
+Explain the actual topic clearly.
+Use simple college-level language.
+Include definitions, mechanisms, examples, applications and exam points where relevant.
+
+${moodInstruction}`,
+    },
+
+    {
+      role: "user",
+      content: `Create detailed study notes for:
+
+Subject: ${subject}
+Topic: ${topic}
+
+Requirements:
+- Explain the actual topic, not how to study it.
+- Use accurate academic terminology.
+- Include important definitions and concepts.
+- Explain mechanisms/processes where relevant.
+- Include examples and applications where relevant.
+- Make examination points useful for semester preparation.
+- Give 5 short-answer questions.
+- Give 3 descriptive/long-answer questions.
+- Give 6 to 10 quick-revision points.
+- Create 3 to 5 logical sections.
+- Each section must have a heading, subheading, explanation and bullet points.
 - Return only the requested JSON structure.`,
-        },
-      ],
-      response_format: {
-        type: "json_schema",
-        json_schema: {
-          name: "luca_notes",
-          strict: true,
-          schema: notesSchema,
-        },
-      },
-    });
+    },
+  ],
+
+  response_format: {
+    type: "json_schema",
+    json_schema: {
+      name: "luca_notes",
+      strict: true,
+      schema: notesSchema,
+    },
+  },
+});
 
     const content = completion.choices?.[0]?.message?.content;
 
