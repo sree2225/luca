@@ -1,0 +1,25 @@
+LUCA AI TUTOR - SUBJECT UPDATE
+
+Updated the subject list to match the curriculum shown in the provided screenshot:
+1. LANG I - Tamil
+2. ENG I - English
+3. DCC 1 - Introduction to Bioinformatics
+4. DCC 2 - Fundamentals of Computer
+5. MDC 1 - Introduction to Cell Biology and Biomolecules
+6. DSE 1 - Biology Specific Elective - I
+7. DCC 1 (Lab) - Introduction to Bioinformatics Practical II
+8. VAC 1 - Universal Human Values
+9. SEC 1 - Soft Skills
+
+Subject cards now show the curriculum code and the subject count updates automatically.
+
+IMPORTANT:
+The original GROQ API key was not included in this updated package. Put your new key in frontend/.env:
+GROQ_API_KEY=your_new_key_here
+
+Then run:
+1. cd frontend
+2. npm install
+3. npm run server
+4. Open a second terminal in frontend
+5. npm run dev
